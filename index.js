@@ -2,6 +2,11 @@ const fs = require('fs')
 const path = require('path')
 const express = require('express')
 const app = express()
+const handlebars = require('express-handlebars')
+
+app.set('views', './templates')
+app.engine('handlebars', handlebars())
+app.set('view engine', 'handlebars')
 
 if (process.argv.length <= 2) {
   console.log(`usage: ${__filename} path/to/directory`)
@@ -16,13 +21,16 @@ const getDirectory = (directory, cb) => {
   const items = fs.readdirSync(dir)
 
   for (i in items) {
-    const entry = {}
     const absPath = path.join(dir, items[i])
     const stats = fs.statSync(absPath)
 
-    entry.path = absPath
-    entry.size = stats.size
-    entry.isDir = stats.isDirectory()
+    const entry = {
+      parent: dir,
+      name: items[i],
+      path: absPath,
+      size: stats.size,
+      isDir: stats.isDirectory()
+    }
 
     fullDir.push(entry)
   }
@@ -30,7 +38,9 @@ const getDirectory = (directory, cb) => {
 }
 
 app.get('/', (req, res) => {
-  res.send(getDirectory(userPath))
+  res.render('index', {
+    files: getDirectory(userPath)
+  })
 })
 
 app.listen(9000)
