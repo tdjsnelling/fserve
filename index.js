@@ -23,7 +23,6 @@ const getDirectory = (directory, cb) => {
   for (i in items) {
     const absPath = path.join(dir, items[i])
     const stats = fs.statSync(absPath)
-
     const entry = {
       parent: dir,
       name: items[i],
@@ -31,7 +30,6 @@ const getDirectory = (directory, cb) => {
       size: stats.size,
       isDir: stats.isDirectory()
     }
-
     fullDir.push(entry)
   }
   return fullDir
@@ -40,6 +38,13 @@ const getDirectory = (directory, cb) => {
 app.get('/', (req, res) => {
   res.render('index', {
     files: getDirectory(userPath)
+  })
+})
+
+app.get('/:path', (req, res) => {
+  const parsedPath = req.params.path.replace('>', '/')
+  res.render('index', {
+    files: getDirectory(path.join(userPath, parsedPath))
   })
 })
 
