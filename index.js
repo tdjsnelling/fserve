@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/:path', (req, res) => {
-  const parsedPath = req.params.path.replace('>', '/')
+  const parsedPath = req.params.path.replace(new RegExp('>', 'g'), '/')
   res.render('index', {
     files: getDirectory(path.join(userPath, parsedPath))
   })
