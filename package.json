@@ -1,0 +1,12 @@
+{
+  "name": "fserve",
+  "version": "1.0.0",
+  "description": "a better `autoindex on`",
+  "main": "index.js",
+  "author": "Tom Snelling",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "handlebars": "^4.0.12"
+  }
+}
