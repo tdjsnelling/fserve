@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>fserve</title>
   <link rel="stylesheet" type="text/css" href="/static/css/index.css">
 </head>
@@ -24,7 +25,7 @@
           </div>
         </a>
       {{else }}
-        <a href="/file{{ relPath }}" class="link">
+        <a href="/file{{ relPath }}" target="_blank" class="link">
           <div class="item file">
             <div class="image">
               {{#if isImage }}

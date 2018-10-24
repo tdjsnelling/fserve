@@ -30,7 +30,7 @@ body {
 .list {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 32px;
+  margin-top: 48px;
 }
 
 .item {

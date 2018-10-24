@@ -19,6 +19,8 @@ const userPath = fs.realpathSync(process.argv[2])
 app.use('/file', express.static(userPath))
 app.use('/static', express.static('static'))
 
+const delimeter = '>'
+
 const getDirectory = (directory, cb) => {
   const fullDir = []
   const dir = fs.realpathSync(directory)
@@ -37,7 +39,7 @@ const getDirectory = (directory, cb) => {
       isDir: stats.isDirectory(),
       isImage: type && type.indexOf('image') !== -1,
       relPath: dir.replace(userPath, '') + '/' + items[i],
-      formattedRelPath: dir.replace(userPath, '').replace(new RegExp('/', 'g'), '>') + '>' + items[i]
+      formattedRelPath: dir.replace(userPath, '').replace(new RegExp('/', 'g'), delimeter) + delimeter + items[i]
     }
     fullDir.push(entry)
   }
@@ -51,7 +53,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/:path', (req, res) => {
-  const parsedPath = req.params.path.replace(new RegExp('>', 'g'), '/')
+  const parsedPath = req.params.path.replace(new RegExp(delimeter, 'g'), '/')
   res.render('index', {
     files: getDirectory(path.join(userPath, parsedPath))
   })
