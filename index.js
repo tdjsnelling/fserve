@@ -13,7 +13,7 @@ if (process.argv.length <= 2) {
   process.exit(-1)
 }
 
-const userPath = process.argv[2]
+const userPath = fs.realpathSync(process.argv[2])
 
 const getDirectory = (directory, cb) => {
   const fullDir = []
@@ -28,7 +28,8 @@ const getDirectory = (directory, cb) => {
       name: items[i],
       path: absPath,
       size: stats.size,
-      isDir: stats.isDirectory()
+      isDir: stats.isDirectory(),
+      relPath: dir.replace(userPath, '') + '>' + items[i]
     }
     fullDir.push(entry)
   }

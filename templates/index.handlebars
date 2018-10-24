@@ -1,3 +1,7 @@
 {{#each files }}
- <p>{{ name }} {{#if isDir }} (dir) {{/if }}</p>
+  {{#if isDir }}
+    <a href={{ relPath }}>{{ name }}</a>
+  {{else }}
+    <p>{{ name }}</p>
+  {{/if }}
 {{/each }}
