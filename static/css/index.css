@@ -37,7 +37,7 @@ body {
 .list {
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(200px, 1fr));
-  margin-top: 48px;
+  margin-top: 64px;
 }
 
 .item {

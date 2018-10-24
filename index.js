@@ -44,7 +44,19 @@ const getDirectory = (directory, cb) => {
     }
     fullDir.push(entry)
   }
-  return fullDir
+  return fullDir.sort((a, b) => {
+    const nameA = a.name.toLowerCase()
+    const nameB = b.name.toLowerCase()
+
+    if (nameA < nameB) {
+      return -1
+    }
+    else if (nameA > nameB) {
+      return 1
+    }
+
+    return 0
+  })
 }
 
 app.get('/', (req, res) => {
