@@ -37,7 +37,7 @@ const getDirectory = (directory, cb) => {
       size: stats.size,
       type: type,
       isDir: stats.isDirectory(),
-      isImage: type && type.indexOf('image') !== -1,
+      isImage: type && type.indexOf('image/') !== -1,
       relPath: dir.replace(userPath, '') + '/' + items[i],
       formattedRelPath: dir.replace(userPath, '').replace(new RegExp('/', 'g'), delimeter) + delimeter + items[i]
     }
