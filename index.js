@@ -15,6 +15,8 @@ if (process.argv.length <= 2) {
 
 const userPath = fs.realpathSync(process.argv[2])
 
+app.use('/file', express.static(userPath))
+
 const getDirectory = (directory, cb) => {
   const fullDir = []
   const dir = fs.realpathSync(directory)
@@ -29,7 +31,8 @@ const getDirectory = (directory, cb) => {
       path: absPath,
       size: stats.size,
       isDir: stats.isDirectory(),
-      relPath: dir.replace(userPath, '') + '>' + items[i]
+      relPath: dir.replace(userPath, '') + '/' + items[i],
+      formattedRelPath: dir.replace(userPath, '') + '>' + items[i]
     }
     fullDir.push(entry)
   }
