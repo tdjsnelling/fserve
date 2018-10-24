@@ -1,9 +1,18 @@
-<ul>
-  {{#each files }}
-    {{#if isDir }}
-      <li><a href={{ formattedRelPath }}>{{ name }} (DIR)</a></li>
-    {{else }}
-      <li><a href="/file{{ relPath }}">{{ name }}</a></li>
-    {{/if }}
-  {{/each }}
-</ul>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>fserve</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+</head>
+<body>
+  <ul class="list">
+    {{#each files }}
+      {{#if isDir }}
+        <li class="directory"><a href={{ formattedRelPath }} class="item">{{ name }}/</a></li>
+      {{else }}
+        <li class="file"><a href="/file{{ relPath }}" class="item">{{ name }}</a></li>
+      {{/if }}
+    {{/each }}
+  </ul>
+</body>
+</html>

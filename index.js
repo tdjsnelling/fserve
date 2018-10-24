@@ -16,6 +16,7 @@ if (process.argv.length <= 2) {
 const userPath = fs.realpathSync(process.argv[2])
 
 app.use('/file', express.static(userPath))
+app.use('/static', express.static('static'))
 
 const getDirectory = (directory, cb) => {
   const fullDir = []
