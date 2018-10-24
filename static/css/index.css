@@ -62,7 +62,7 @@ body {
   text-decoration: none;
   word-break: break-word;
   display: block;
-  padding: 48px 32px;
+  padding: 32px;
 }
 
 .link:hover {
@@ -72,4 +72,12 @@ body {
 
 .directory p {
   color: #d63031;
+}
+
+.fileName {
+  margin-bottom: 8px;
+}
+
+.fileSize {
+  font-family: monospace;
 }

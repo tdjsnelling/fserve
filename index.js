@@ -4,6 +4,7 @@ const express = require('express')
 const app = express()
 const handlebars = require('express-handlebars')
 const mime = require('mime-types')
+const filesize = require('filesize')
 
 app.set('views', './templates')
 app.engine('handlebars', handlebars())
@@ -34,7 +35,7 @@ const getDirectory = (directory, cb) => {
       parent: dir,
       name: items[i],
       path: absPath,
-      size: stats.size,
+      size: filesize(stats.size),
       type: type,
       isDir: stats.isDirectory(),
       isImage: type && type.indexOf('image/') !== -1,
