@@ -27,7 +27,7 @@ body {
 }
 
 .controls {
-  margin-right: 16px;
+  margin-right: 32px;
 }
 
 .controls a {
@@ -48,12 +48,20 @@ body {
   justify-content: space-between;
 }
 
-.item img {
+.image {
+  margin-bottom: 8px;
+}
+
+.item .icon {
   width: 72px;
-  max-height: 72px;
 }
 
 .item .preview {
+  max-height: 100px;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  display: block;
   border: 1px solid grey;
 }
 
@@ -66,7 +74,6 @@ body {
 }
 
 .link:hover {
-  text-decoration: underline;
   background: #f0f0f0;
 }
 

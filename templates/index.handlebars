@@ -19,7 +19,7 @@
         <a href={{ formattedRelPath }} class="link">
           <div class="item directory">
             <div class="image">
-              <img src="/static/svg/folder.svg" />
+              <img src="/static/svg/folder.svg" class="icon" />
             </div>
             <p>{{ name }}/</p>
           </div>
@@ -31,7 +31,7 @@
               {{#if isImage }}
                 <img src="/file{{ relPath }}" class="preview" />
               {{else }}
-                <img src="/static/svg/file.svg" />
+                <img src="/static/svg/file.svg" class="icon" />
               {{/if }}
             </div>
             <p class="fileName">{{ name }}</p>
