@@ -5,7 +5,13 @@
   <link rel="stylesheet" type="text/css" href="/static/css/index.css">
 </head>
 <body>
-  <h2>{{ files.0.parent }}</h2>
+  <div class="nav">
+    <h2 class="cd">{{ files.0.parent }}</h2>
+    <div class="controls">
+      <a href="javascript:window.history.back()"><img src="/static/svg/back.svg" alt=""></a>
+      <a href="/"><img src="/static/svg/home.svg" alt=""></a>
+    </div>
+  </div>
   <div class="list">
     {{#each files }}
       {{#if isDir }}

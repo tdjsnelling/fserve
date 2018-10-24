@@ -1,10 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: monospace;
+}
+
+.cd {
+  margin: 0;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 16px 32px;
+  background: white;
+  border-bottom: 1px solid lightgrey;
+  display: flex;
+  justify-content: space-between;
+}
+
+.controls a {
+  margin-left: 8px;
 }
 
 .list {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 32px;
 }
 
 .item {
@@ -20,6 +46,7 @@ body {
 
 .item img {
   width: 72px;
+  max-height: 72px;
 }
 
 .item .preview {
@@ -38,5 +65,5 @@ body {
 }
 
 .directory p {
-  color: red;
+  color: #d63031;
 }
