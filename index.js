@@ -32,8 +32,8 @@ const getDirectory = (directory, cb) => {
       path: absPath,
       size: stats.size,
       isDir: stats.isDirectory(),
-      relPath: dir.replace(userPath, '') + '/' + items[i],
-      formattedRelPath: dir.replace(userPath, '') + '>' + items[i]
+      relPath: dir.replace(userPath, '').replace(new RegExp('/', 'g'), '>') + '/' + items[i],
+      formattedRelPath: dir.replace(userPath, '').replace(new RegExp('/', 'g'), '>') + '>' + items[i]
     }
     fullDir.push(entry)
   }
