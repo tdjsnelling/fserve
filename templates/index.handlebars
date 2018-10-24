@@ -8,9 +8,9 @@
   <ul class="list">
     {{#each files }}
       {{#if isDir }}
-        <li class="directory"><a href={{ formattedRelPath }} class="item">{{ name }}/</a></li>
+        <li class="item directory"><a href={{ formattedRelPath }} class="link">{{ name }}/</a></li>
       {{else }}
-        <li class="file"><a href="/file{{ relPath }}" class="item">{{ name }}</a></li>
+        <li class="item file"><a href="/file{{ relPath }}" class="link">{{ name }}</a></li>
       {{/if }}
     {{/each }}
   </ul>
