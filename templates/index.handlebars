@@ -11,14 +11,22 @@
       {{#if isDir }}
         <a href={{ formattedRelPath }} class="link">
           <div class="item directory">
-            <img src="/static/svg/folder.svg" />
+            <div class="image">
+              <img src="/static/svg/folder.svg" />
+            </div>
             <p>{{ name }}/</p>
           </div>
         </a>
       {{else }}
         <a href="/file{{ relPath }}" class="link">
           <div class="item file">
-            <img src="/static/svg/file.svg" />
+            <div class="image">
+              {{#if isImage }}
+                <img src="/file{{ relPath }}" class="preview" />
+              {{else }}
+                <img src="/static/svg/file.svg" />
+              {{/if }}
+            </div>
             <p>{{ name }}</p>
           </div>
         </a>

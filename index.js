@@ -3,6 +3,7 @@ const path = require('path')
 const express = require('express')
 const app = express()
 const handlebars = require('express-handlebars')
+const mime = require('mime-types')
 
 app.set('views', './templates')
 app.engine('handlebars', handlebars())
@@ -26,12 +27,15 @@ const getDirectory = (directory, cb) => {
   for (i in items) {
     const absPath = path.join(dir, items[i])
     const stats = fs.statSync(absPath)
+    const type = mime.lookup(absPath)
     const entry = {
       parent: dir,
       name: items[i],
       path: absPath,
       size: stats.size,
+      type: type,
       isDir: stats.isDirectory(),
+      isImage: type && type.indexOf('image') !== -1,
       relPath: dir.replace(userPath, '') + '/' + items[i],
       formattedRelPath: dir.replace(userPath, '').replace(new RegExp('/', 'g'), '>') + '>' + items[i]
     }
