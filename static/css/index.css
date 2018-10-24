@@ -22,6 +22,7 @@ body {
   background: white;
   border-bottom: 1px solid lightgrey;
   display: flex;
+  align-items: center;
   justify-content: flex-start;
 }
 
@@ -34,15 +35,12 @@ body {
 }
 
 .list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(200px, 1fr));
   margin-top: 48px;
 }
 
 .item {
-  height: 100px;
-  width: 100px;
-  margin: 48px 32px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -64,10 +62,12 @@ body {
   text-decoration: none;
   word-break: break-word;
   display: block;
+  padding: 48px 32px;
 }
 
 .link:hover {
   text-decoration: underline;
+  background: #f0f0f0;
 }
 
 .directory p {
