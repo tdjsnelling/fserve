@@ -2,7 +2,7 @@
 
 a better `autoindex on`
 
-![](https://i.imgur.com/XO4sYff.png)
+![](https://i.imgur.com/TDmjdgA.png)
 
 ## usage
 
