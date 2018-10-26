@@ -8,11 +8,19 @@
 </head>
 <body>
   <div class="nav">
-    <div class="controls">
-      <a href="javascript:window.history.back()"><img src="/static/svg/back.svg" alt=""></a>
-      <a href="/"><img src="/static/svg/home.svg" alt=""></a>
+    <div class="left">
+      <div class="controls">
+        <a href="javascript:window.history.back()"><img src="/static/svg/back.svg" alt=""></a>
+        <a href="/"><img src="/static/svg/home.svg" alt=""></a>
+      </div>
+      <h3 class="cd">{{ files.0.parent }}</h3>
     </div>
-    <h3 class="cd">{{ files.0.parent }}</h3>
+    <select>
+      <option value="">Name A-Z</option>
+      <option value="">Name Z-A</option>
+      <option value="">Type A-Z</option>
+      <option value="">Type Z-A</option>
+    </select>
   </div>
   <div class="list">
     {{#each files }}

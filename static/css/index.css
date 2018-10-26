@@ -22,8 +22,13 @@ body {
   background: white;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   box-shadow: 0 0 4px rgba(0,0,0,.04), 0 4px 8px rgba(0,0,0,.18);
+}
+
+.nav .left {
+  display: flex;
+  align-items: center;
 }
 
 .controls {

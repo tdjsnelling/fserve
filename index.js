@@ -22,7 +22,38 @@ app.use('/static', express.static('static'))
 
 const delimeter = '>'
 
-const getDirectory = (directory, cb) => {
+const sortAlpha = (a, b) => {
+  const nameA = a.name.toLowerCase()
+  const nameB = b.name.toLowerCase()
+
+  if (nameA < nameB) {
+    return -1
+  }
+  else if (nameA > nameB) {
+    return 1
+  }
+
+  return 0
+}
+
+const sortExtension = (a, b) => {
+  const nameA = a.name.toLowerCase().split('.')
+  const nameB = b.name.toLowerCase().split('.')
+
+  const extA = nameA[nameA.length - 1]
+  const extB = nameB[nameB.length - 1]
+
+  if (extA < extB) {
+    return -1
+  }
+  else if (extA > extB) {
+    return 1
+  }
+
+  return 0
+}
+
+const getDirectory = (directory, sortingByType, reverse) => {
   const fullDir = []
   const dir = fs.realpathSync(directory)
   const items = fs.readdirSync(dir)
@@ -44,31 +75,34 @@ const getDirectory = (directory, cb) => {
     }
     fullDir.push(entry)
   }
-  return fullDir.sort((a, b) => {
-    const nameA = a.name.toLowerCase()
-    const nameB = b.name.toLowerCase()
 
-    if (nameA < nameB) {
-      return -1
-    }
-    else if (nameA > nameB) {
-      return 1
-    }
+  let sortedDir
 
-    return 0
-  })
+  if (sortingByType) {
+    const directories = fullDir.filter(x => x.isDir).sort(sortAlpha)
+    const dotfiles = fullDir.filter(x => !x.isDir && x.name[0] === '.').sort(sortAlpha)
+    const other = fullDir.filter(x => !x.isDir && x.name[0] !== '.').sort(sortExtension)
+
+    sortedDir = directories.concat(dotfiles).concat(other)
+  }
+  else {
+    sortedDir = fullDir.sort(sortAlpha)
+  }
+
+  if (reverse) return sortedDir.reverse()
+  return sortedDir
 }
 
 app.get('/', (req, res) => {
   res.render('index', {
-    files: getDirectory(userPath)
+    files: getDirectory(userPath, false, false)
   })
 })
 
 app.get('/:path', (req, res) => {
   const parsedPath = req.params.path.replace(new RegExp(delimeter, 'g'), '/')
   res.render('index', {
-    files: getDirectory(path.join(userPath, parsedPath))
+    files: getDirectory(path.join(userPath, parsedPath), true)
   })
 })
 
